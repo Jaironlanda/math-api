@@ -6,13 +6,13 @@ This API is develop for education purpose only.
 
 ### Available Endpoint
 
-- `/question`
+- `/question` or `https://math.newbapi.com/question`
 
 ### Parameter
 
 - `no_ques` : required `integer` only.
-- `level`: defculty of question. Available parameter, `easy`, `medium`, and `hard`. Default is `mix`
-- `op`: operation of question. Available parameter, `addition`, `multiply`,`substract` and `division`. Default is `mix`
+- `level`: difficulty of question. Available parameter:  `easy`, `medium`, and `hard`. Default is `mix`
+- `op`: operation of question. available parameters:  `addition`, `multiply`,`substract` and `division`. Default is `mix`
 
 ### Example Usage (Basic)
 
