@@ -68,4 +68,10 @@ curl -X 'GET' \
   });
 ```
 
+### Run local or self hosting (Docker)
+
+```bash
+docker compose build && docker compose up
+```
+
 # NewbAPI Project (https://newbapi.com)
