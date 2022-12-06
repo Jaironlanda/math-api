@@ -12,21 +12,21 @@ jobs:
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       
-
+  
     steps:
       - name: Login VPS via SSH
         uses: appleboy/ssh-action@master
-        env: 
-          USER_AUTH : ${{ secrets.USER_AUTH }}
-
+        env:
+         USER_AUTH : ${{ secrets.USER_AUTH }}
+         
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "$USER_AUTH" | sudo -S docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
-            echo "$USER_AUTH" | sudo -S docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
-            echo "$USER_AUTH" | sudo -S docker image prune -f
+            echo "${{ secrets.USER_AUTH }}" | sudo -S docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
+            echo "${{ secrets.USER_AUTH }}" | sudo -S docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
+            echo "${{ secrets.USER_AUTH }}" | sudo -S docker image prune -f
     
       - name: Slack Noti
         uses: act10ns/slack@v1
