@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo ${{ secrets.USER_AUTH }} | sudo -S
+            echo "${{ secrets.USER_AUTH }}" | sudo -S
             sudo docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
             sudo docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
             sudo docker image prune -f
