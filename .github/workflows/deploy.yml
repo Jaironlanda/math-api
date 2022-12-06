@@ -18,9 +18,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
-          docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
-          docker image prune -f
+          sudo docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
+          sudo docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
+          sudo docker image prune -f
     
     - name: Slack Noti
       uses: act10ns/slack@v1
