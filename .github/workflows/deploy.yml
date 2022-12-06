@@ -24,10 +24,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "${{ secrets.USER_AUTH }}" | sudo -S
-            sudo docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
-            sudo docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
-            sudo docker image prune -f
+            echo "$USER_AUTH" | sudo -S docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
+            echo "$USER_AUTH" | sudo -S docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
+            echo "$USER_AUTH" | sudo -S docker image prune -f
     
       - name: Slack Noti
         uses: act10ns/slack@v1
