@@ -1,0 +1,30 @@
+name: Deploy math-gen-api
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Login VPS via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          docker compose -f docker-compose.yml pull ${{ secrets.COINTAINER_NAME }} && \
+          docker compose -f docker-compose.yml up ${{secrets.COINTAINER_NAME}} -d && \
+          docker image prune -f
+    
+    - name: Slack Noti
+      uses: act10ns/slack@v1
+      with:
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+      if: always()

@@ -93,6 +93,11 @@ def root():
     }
 
 
+@app.get("/test")
+def test():
+    return {"message": "test 123"}
+
+
 @app.get("/question")
 async def get_question(setting: str, ops: str, no: int, qkseed: Optional[str] = None):
     """
