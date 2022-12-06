@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from urllib.request import urlopen
 from random import sample
-import ijson,json, random
+import ijson, random
 
 
 app = FastAPI()
@@ -28,29 +28,27 @@ async def loadJson(ques_setting: str, ques_ops: str):
         
         if not ques_ops == 'rand':
             question_file = (o for o in load_questions if o["op"] == ques_ops)
-            # return question_file
             
         else:
             question_file = (o for o in load_questions)
-            # return question_file
-
+            
     elif ques_setting == '2digit':
         load_questions = ijson.items(file_2digit, "item")
         if not ques_ops == 'rand':
             question_file = (o for o in load_questions if o["op"] == ques_ops)
-            # return question_file
+
         else:
             question_file = (o for o in load_questions)
-            # return question_file
+
     elif ques_setting == '3digit':
         load_questions = ijson.items(file_3digit, "item")
         
         if not ques_ops == 'rand':
             question_file = (o for o in load_questions if o["op"] == ques_ops)
-            # return question_file
+
         else:
             question_file = (o for o in load_questions)
-            # return question_file
+
     
     # elif ques_setting == 'rand' and ques_ops == 'rand':
     #     load_questions_1 = ijson.items(file_1digit, "item")
@@ -97,7 +95,19 @@ def root():
 
 @app.get("/question")
 async def get_question(setting: str, ops: str, no: int, qkseed: Optional[str] = None):
-    
+    """
+        Parameter: \n
+        setting - 1digit , 2digit , 3 digit \n
+        ops - addition, substract, multiply \n
+        no - Minimum: 1, Maximum: 100 \n
+        qkseed - random text or number (Optional) \n
+
+        \nExample:\n
+        1digit\n
+        addition\n
+        10\n
+        hh214xcw\n
+    """
     random.seed(qkseed)
     data = await loadJson(ques_setting=setting, ques_ops=ops)
 

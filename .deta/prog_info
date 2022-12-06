@@ -1,1 +1,1 @@
-{"id":"c97b6171-4148-45f4-b3f4-9d06919c0a8f","space":18914,"runtime":"python3.9","name":"quick-math","path":"ueefst","project":"c0n6xt4d","account":"144798365827","region":"ap-southeast-1","deps":["fastapi","ijson","uvicorn"],"envs":null,"public":true,"log_level":"off","cron":""}
+{"id":"c97b6171-4148-45f4-b3f4-9d06919c0a8f","space":18914,"runtime":"python3.9","name":"quick-math","path":"ueefst","project":"c0n6xt4d","account":"144798365827","region":"ap-southeast-1","deps":["fastapi","ijson","uvicorn"],"envs":null,"public":true,"log_level":"debug","cron":""}
