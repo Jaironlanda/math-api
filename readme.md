@@ -13,8 +13,8 @@ API to generate math questions and answers. Supported math operations include ad
 ### Available Endpoint
 - `/question` 
 #### Server
-- `https://math.newbapi.com/question` (Deta Server)
-- `https://api.qkmath.com/question` (official)
+- ~~`https://math.newbapi.com/question`~~ (Deta Server) **DEAD**
+- `https://api.qkmath.com/question` (official) **ACTIVE**
 
 ### Parameter
 - `setting` - `1digit` , `2digit` , `3digit`
